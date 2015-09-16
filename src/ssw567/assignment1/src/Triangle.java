@@ -67,8 +67,8 @@ public class Triangle {
 	 * @return True if valid triangle.
 	 */
 	public boolean hasValidSides() {
-		return sideA + sideB > sideC
-				&& sideA + sideC > sideB
-				&& sideB + sideC > sideA;
+		return (long) sideA + sideB > sideC
+				&& (long) sideA + sideC > sideB
+				&& (long) sideB + sideC > sideA;
 	}
 }
