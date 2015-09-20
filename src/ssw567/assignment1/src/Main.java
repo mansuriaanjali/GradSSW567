@@ -1,9 +1,11 @@
 package ssw567.assignment1.src;
 
+import java.util.*;
+
 public class Main {
 	/**
 	 * Simple main program that tests a Triangle.
-	 * Accepts CLI input or uses the default values 3, 4 and 5.
+	 * Accepts CLI input or standard input if no CLI arguments are found.
 	 * @param args Should be 3 integers (triangle sides) to work properly.
 	 */
 	public static void main(String args[]) {
@@ -16,6 +18,17 @@ public class Main {
 				sideB = Integer.parseInt(args[1]);
 				sideC = Integer.parseInt(args[2]);
 			} catch (NumberFormatException e) {
+				System.out.println("Invalid input. Should be 3 integers.");
+				System.exit(1);
+			}
+		}
+		else {
+			System.out.println("Enter 3 integers.");
+			try (Scanner scanner = new Scanner(System.in)) {
+				sideA = scanner.nextInt();
+				sideB = scanner.nextInt();
+				sideC = scanner.nextInt();
+			} catch (InputMismatchException  e) {
 				System.out.println("Invalid input. Should be 3 integers.");
 				System.exit(1);
 			}
