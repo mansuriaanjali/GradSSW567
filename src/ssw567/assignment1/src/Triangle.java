@@ -30,13 +30,14 @@ public class Triangle {
 	}
 
 	/**
-	 * Should have at least 2 equal sides.
+	 * Should have exactly 2 equal sides.
 	 * @return True if Isosceles triangle.
 	 */
 	public boolean IsIsosceles() {
-		return sideA == sideB
-				|| sideA == sideC
-				|| sideB == sideC;
+		return !IsEquilateral() &&
+			(equals(sideA, sideB) ||
+			equals(sideB, sideC) ||
+			equals(sideA, sideC));
 	}
 
 	/**
@@ -56,10 +57,11 @@ public class Triangle {
 		double powA = Math.pow(sideA, 2);
 		double powB = Math.pow(sideB, 2);
 		double powC = Math.pow(sideC, 2);
-		return  powA + powB == powC
-				|| powA + powC == powB
-				|| powB + powC == powA;
+		return equals(powA + powB, powC)
+				|| equals(powA + powC, powB)
+				|| equals(powB + powC, powA);
 	}
+
 
 	/**
 	 * The given values should form a valid triangle, which means no side can be
@@ -71,4 +73,15 @@ public class Triangle {
 				&& (long) sideA + sideC > sideB
 				&& (long) sideB + sideC > sideA;
 	}
+
+	/**
+	 * Floating point values need to take precision loss into account when
+	 * testing equality.
+	 * @return True if values are equal within a certain window.
+	 */
+	public static boolean equals(double left, double right) {
+		final double epsilon = 0.00001;
+		return Math.abs(left - right) < epsilon;
+	}
+
 }
