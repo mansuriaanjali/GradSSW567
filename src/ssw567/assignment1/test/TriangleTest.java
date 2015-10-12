@@ -76,4 +76,54 @@ public class TriangleTest {
 		}
 		Assert.assertTrue("Should NOT be a valid triangle.", thrown);
 	}
+
+	@Test
+	public void testMaxValue() {
+		final int bound = Integer.MAX_VALUE;
+		Triangle t = null;
+		try {
+			t = new Triangle(bound, bound, bound);
+		} catch (InvalidTriangleException e) {
+			Assert.fail("Should not be invalid.");
+		}
+		Assert.assertTrue("Should be an Equilateral triangle.",
+			t.IsEquilateral());
+	}
+
+	@Test
+	public void testMinValue() {
+		final int bound = 1;
+		Triangle t = null;
+		try {
+			t = new Triangle(bound, bound, bound);
+		} catch (InvalidTriangleException e) {
+			Assert.fail("Should not be invalid.");
+		}
+		Assert.assertTrue("Should be an Equilateral triangle.",
+			t.IsEquilateral());
+	}
+
+	@Test
+	public void testMaxIllegalValue() {
+		final int bound = 0;
+		boolean thrown = false;
+		try {
+			new Triangle(bound, bound, bound);
+		} catch (InvalidTriangleException e) {
+			thrown = true;
+		}
+		Assert.assertTrue("Should NOT be a valid triangle.", thrown);
+	}
+
+	@Test
+	public void testNegativeValues() {
+		boolean thrown = false;
+		try {
+			new Triangle(1, -1, 1);
+		} catch (InvalidTriangleException e) {
+			thrown = true;
+		}
+		Assert.assertTrue("Should NOT be a valid triangle.", thrown);
+	}
+
 }
