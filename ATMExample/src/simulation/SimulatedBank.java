@@ -318,13 +318,13 @@ public class SimulatedBank
     /** Balance for each account (will change as program runs, hence not a
      *  static final.
      */
-    private Money BALANCE [] =
+    /**private Money BALANCE [] =
     {
         new Money(0),   // dummy for nonexistent account 0
         new Money(100), 
         new Money(1000),
         new Money(5000) 
-    }; 
+    }; */
     
     /** Available alance for each account (will change as program runs, hence
      *  not a static final.
